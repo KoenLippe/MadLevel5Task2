@@ -25,7 +25,7 @@ class AddGameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fabAddGame.setOnClickListener {
-            findNavController().navigate(R.id.action_AddGameFragment_to_OverviewFragment)
+            findNavController().popBackStack()
         }
     }
 }
