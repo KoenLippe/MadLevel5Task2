@@ -7,24 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.madlevel5task2.R
 import com.example.madlevel5task2.model.Game
 import kotlinx.android.synthetic.main.fragment_overview.*
 import java.time.LocalDate
-import java.util.*
+import androidx.lifecycle.Observer
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class OverviewFragment : Fragment() {
 
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private val games = listOf<Game>(Game("Doom Eternal", "PC", LocalDate.now()), Game("Doom Eternal", "PC", LocalDate.now()), Game("Doom Eternal", "PC", LocalDate.now()))
+    private val games = arrayListOf<Game>(Game("Doom Eternal", "PC"), Game("Doom Eternal", "PC"), Game("Doom Eternal", "PC"))
     @RequiresApi(Build.VERSION_CODES.O)
     private val gameAdapter = GameAdapter(games)
+
+
+    private val gameViewModel: GameViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +46,10 @@ class OverviewFragment : Fragment() {
             findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
         }
 
+
         initRv()
+
+        observeLiveData()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -51,6 +58,16 @@ class OverviewFragment : Fragment() {
             adapter = gameAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observeLiveData() {
+        gameViewModel.gamesLiveData.observe(viewLifecycleOwner, Observer { liveGames: List<Game> ->
+            games.clear()
+            games.addAll(liveGames)
+            gameAdapter.notifyDataSetChanged()
+        })
 
     }
 

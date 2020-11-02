@@ -15,7 +15,7 @@ class GameRepository(context: Context) {
         gameDao = database!!.getGameDao()
     }
 
-    fun getAllGames(): LiveData<Game> {
+    fun getAllGames(): List<Game> {
         return gameDao.getAllGames()
     }
 
