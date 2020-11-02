@@ -1,8 +1,11 @@
 package com.example.madlevel5task2.ui
 
+import android.app.Activity
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel5task2.R
 import com.example.madlevel5task2.databinding.ItemGameBinding
@@ -14,10 +17,16 @@ class GameAdapter(private val games: List<Game>): RecyclerView.Adapter<GameAdapt
 
         private val binding = ItemGameBinding.bind(itemView)
 
+
+        @RequiresApi(Build.VERSION_CODES.O)
         fun dataBind(game: Game) {
             binding.txtTitle.text = game.title
             binding.txtPlatform.text = game.platform
-            binding.txtRelease.text = game.date.toString()
+            binding.txtRelease.text =
+                String.format("Release: %s %s %s",
+                    game.date.dayOfMonth,
+                    game.date.month,
+                    game.date.year)
         }
     }
 
@@ -29,6 +38,7 @@ class GameAdapter(private val games: List<Game>): RecyclerView.Adapter<GameAdapt
         return games.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.dataBind(games[position])
     }
