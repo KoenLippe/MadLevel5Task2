@@ -1,6 +1,7 @@
 package com.example.madlevel5task2.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import com.example.madlevel5task2.dao.GameDao
 import com.example.madlevel5task2.database.GameRoomDatabase
 import com.example.madlevel5task2.model.Game
@@ -14,7 +15,7 @@ class GameRepository(context: Context) {
         gameDao = database!!.getGameDao()
     }
 
-    suspend fun getAllGames(): List<Game> {
+    fun getAllGames(): LiveData<Game> {
         return gameDao.getAllGames()
     }
 
