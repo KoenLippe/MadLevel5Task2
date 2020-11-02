@@ -1,4 +1,4 @@
-package com.example.madlevel5task2
+package com.example.madlevel5task2.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.madlevel5task2.R
 import kotlinx.android.synthetic.main.fragment_add_game.*
 
 /**
@@ -39,6 +39,8 @@ class AddGameFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).setActionBarTitle(getString(R.string.add_game_title))
+        (activity as MainActivity).setActionBarTitle(getString(
+            R.string.add_game_title
+        ))
     }
 }
