@@ -18,8 +18,7 @@ import java.util.*
  */
 class OverviewFragment : Fragment() {
 
-
-    private val games = listOf<Game>(Game("test", "test", Date()))
+    private val games = listOf<Game>(Game("Doom Eternal", "PC", Date()), Game("Doom Eternal", "PC", Date()), Game("Doom Eternal", "PC", Date()))
     private val gameAdapter = GameAdapter(games)
 
     override fun onCreateView(
@@ -46,7 +45,6 @@ class OverviewFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
         }
 
-        rvGames.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
 
     override fun onResume() {
