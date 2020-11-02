@@ -27,6 +27,10 @@ class OverviewFragment : Fragment() {
         fabOverview.setOnClickListener {
             findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).setActionBarTitle(getString(R.string.overview_title))
     }
 }

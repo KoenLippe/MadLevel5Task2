@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,5 +31,25 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onCreateOptionsMenu(toolbar.menu)
+    }
+
+    fun setToolbarWithBackButton() {
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeButtonEnabled(true)
+    }
+
+    fun setToolbarWithoutBackButton() {
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        supportActionBar!!.setHomeButtonEnabled(false)
+    }
+
+
+    fun setActionBarTitle(title: String) {
+        supportActionBar?.title = title
     }
 }
