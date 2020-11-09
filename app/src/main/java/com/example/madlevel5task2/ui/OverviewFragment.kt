@@ -17,6 +17,7 @@ import java.time.LocalDate
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 /**
@@ -47,7 +48,6 @@ class OverviewFragment : Fragment() {
             findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
         }
 
-
         initRv()
         observeLiveData()
     }
@@ -60,7 +60,6 @@ class OverviewFragment : Fragment() {
             games.sortBy { it.date }
             gameAdapter.notifyDataSetChanged()
         })
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -71,7 +70,6 @@ class OverviewFragment : Fragment() {
         }
 
         createItemTouchHelper().attachToRecyclerView(rvGames)
-
     }
 
     private fun createItemTouchHelper(): ItemTouchHelper {

@@ -1,13 +1,17 @@
 package com.example.madlevel5task2.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import com.example.madlevel5task2.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val gameViewModel: GameViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.delete_all -> {
+                gameViewModel.deleteAllGames()
+                return true
+
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -46,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         supportActionBar!!.setHomeButtonEnabled(false)
     }
-
 
     fun setActionBarTitle(title: String) {
         supportActionBar?.title = title

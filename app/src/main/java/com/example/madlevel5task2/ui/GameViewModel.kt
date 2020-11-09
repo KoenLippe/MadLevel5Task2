@@ -16,14 +16,9 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     private val mainScope = CoroutineScope(Dispatchers.Main)
     private val gameRepository: GameRepository = GameRepository(application.applicationContext)
 
-
-
     val gamesLiveData: LiveData<List<Game>> get() = gameRepository.getAllGames()
 
-
     fun addGame(game: Game) {
-        //TODO validation?
-
         mainScope.launch {
             withContext(Dispatchers.IO) {
                 gameRepository.insertGame(game)
@@ -41,6 +36,11 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    //TODO: Remove single game
-
+    fun deleteAllGames() {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                gameRepository.deleteAllGames()
+            }
+        }
+    }
 }
