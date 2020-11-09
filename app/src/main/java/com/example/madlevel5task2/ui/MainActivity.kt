@@ -1,12 +1,14 @@
 package com.example.madlevel5task2.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import com.example.madlevel5task2.R
+import com.example.madlevel5task2.model.Game
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,9 +32,24 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        class MyUndoListener(games: List<Game>?) : View.OnClickListener {
+
+            val games2 = games
+            override fun onClick(v: View) {
+                games2?.forEach {gameViewModel.addGame(it)
+                }
+            }
+        }
+
         return when (item.itemId) {
             R.id.delete_all -> {
+                val games = gameViewModel.gamesLiveData.value
                 gameViewModel.deleteAllGames()
+                val snackbar = Snackbar.make(toolbar,
+                        "Games deleted", Snackbar.LENGTH_SHORT)
+                snackbar.setAction("Undo", MyUndoListener(games))
+                snackbar.show()
                 return true
 
             }
