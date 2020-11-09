@@ -11,7 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.AddGameFragment">
+        tools:context=".ui.AddGameFragment"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="5dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
