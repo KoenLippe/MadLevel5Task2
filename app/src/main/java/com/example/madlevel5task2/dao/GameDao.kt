@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.madlevel5task2.model.Game
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -18,5 +19,8 @@ interface GameDao {
 
     @Query("DELETE FROM gameTable")
     suspend fun deleteAllGames()
+
+    @Delete
+    fun deleteGame(game: Game)
 
 }

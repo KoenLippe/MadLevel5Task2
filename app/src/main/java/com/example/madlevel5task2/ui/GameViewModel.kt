@@ -22,7 +22,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
 
     fun addGame(game: Game) {
-        //TODO validation
+        //TODO validation?
 
         mainScope.launch {
             withContext(Dispatchers.IO) {
@@ -31,7 +31,15 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    //TODO: Delete game
+    fun deleteGame(game: Game) {
+        //TODO validation?
+
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                gameRepository.deleteGame(game)
+            }
+        }
+    }
 
     //TODO: Remove single game
 
