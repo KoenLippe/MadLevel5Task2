@@ -14,8 +14,8 @@ data class Game(
     @ColumnInfo(name = "platform")
     val platform: String,
 
-//    @ColumnInfo(name = "date")
-//    val date: LocalDate,
+    @ColumnInfo(name = "date")
+    val date: LocalDate,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

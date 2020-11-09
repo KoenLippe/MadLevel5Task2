@@ -15,6 +15,7 @@ import com.example.madlevel5task2.model.Game
 import kotlinx.android.synthetic.main.fragment_overview.*
 import java.time.LocalDate
 import androidx.lifecycle.Observer
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -41,8 +42,7 @@ class OverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fabOverview.setOnClickListener {
-//            findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
-            gameViewModel.addGame(Game("New Game" , " :"))
+            findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
         }
 
 

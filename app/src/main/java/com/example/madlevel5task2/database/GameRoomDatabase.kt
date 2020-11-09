@@ -9,13 +9,13 @@ import androidx.room.TypeConverters
 import com.example.madlevel5task2.dao.GameDao
 
 @TypeConverters(Converters::class)
-@Database(entities = [Game::class], version = 1, exportSchema = false)
+@Database(entities = [Game::class], version = 2, exportSchema = false)
 abstract class GameRoomDatabase: RoomDatabase() {
 
     abstract fun getGameDao(): GameDao
 
     companion object {
-        private val DATABASE_NAME = "GAME_DATABASE"
+        private const val DATABASE_NAME = "GAME_DATABASE"
 
         @Volatile
         private var gameDatabaseInstance: GameRoomDatabase? = null

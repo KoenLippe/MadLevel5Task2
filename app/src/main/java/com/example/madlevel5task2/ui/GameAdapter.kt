@@ -22,11 +22,11 @@ class GameAdapter(private val games: ArrayList<Game>): RecyclerView.Adapter<Game
         fun dataBind(game: Game) {
             binding.txtTitle.text = game.title
             binding.txtPlatform.text = game.platform
-//            binding.txtRelease.text =
-//                String.format("Release: %s %s %s",
-//                    game.date.dayOfMonth,
-//                    game.date.month,
-//                    game.date.year)
+            binding.txtRelease.text =
+                String.format("Release: %s %s %s",
+                    game.date.dayOfMonth,
+                    game.date.month,
+                    game.date.year)
         }
     }
 
