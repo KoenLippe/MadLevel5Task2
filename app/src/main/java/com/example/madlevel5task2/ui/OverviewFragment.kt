@@ -64,6 +64,7 @@ class OverviewFragment : Fragment() {
         gameViewModel.gamesLiveData.observe(viewLifecycleOwner, Observer { liveGames: List<Game> ->
             games.clear()
             games.addAll(liveGames)
+            games.sortBy { it.date }
             gameAdapter.notifyDataSetChanged()
         })
 
