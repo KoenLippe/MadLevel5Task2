@@ -11,7 +11,7 @@ import com.example.madlevel5task2.R
 import com.example.madlevel5task2.databinding.ItemGameBinding
 import com.example.madlevel5task2.model.Game
 
-class GameAdapter(private val games: List<Game>): RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+class GameAdapter(private val games: ArrayList<Game>): RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

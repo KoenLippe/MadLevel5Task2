@@ -21,14 +21,12 @@ import androidx.lifecycle.Observer
  */
 class OverviewFragment : Fragment() {
 
+    private val gameViewModel: GameViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private val games = arrayListOf<Game>(Game("Doom Eternal", "PC"), Game("Doom Eternal", "PC"), Game("Doom Eternal", "PC"))
+    private val games = arrayListOf<Game>()
     @RequiresApi(Build.VERSION_CODES.O)
     private val gameAdapter = GameAdapter(games)
-
-
-    private val gameViewModel: GameViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +41,12 @@ class OverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fabOverview.setOnClickListener {
-            findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
+//            findNavController().navigate(R.id.action_OverviewFragment_to_AddGameFragment)
+            gameViewModel.addGame(Game("New Game" , " :"))
         }
 
 
         initRv()
-
         observeLiveData()
     }
 

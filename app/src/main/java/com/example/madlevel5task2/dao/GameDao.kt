@@ -11,10 +11,10 @@ import androidx.room.Query
 interface GameDao {
 
     @Query("SELECT * FROM gameTable")
-    fun getAllGames(): List<Game>
+    fun getAllGames(): LiveData<List<Game>>
 
     @Insert
-    suspend fun insertGame(game: Game)
+    fun insertGame(game: Game)
 
     @Query("DELETE FROM gameTable")
     suspend fun deleteAllGames()

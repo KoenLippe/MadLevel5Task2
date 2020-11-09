@@ -16,8 +16,9 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     private val mainScope = CoroutineScope(Dispatchers.Main)
     private val gameRepository: GameRepository = GameRepository(application.applicationContext)
 
-    val games: List<Game> = gameRepository.getAllGames()
-    val gamesLiveData: MutableLiveData<List<Game>> = MutableLiveData(games)
+
+
+    val gamesLiveData: LiveData<List<Game>> get() = gameRepository.getAllGames()
 
 
     fun addGame(game: Game) {

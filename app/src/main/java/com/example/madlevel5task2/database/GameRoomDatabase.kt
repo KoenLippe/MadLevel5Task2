@@ -28,8 +28,9 @@ abstract class GameRoomDatabase: RoomDatabase() {
                             context.applicationContext,
                             GameRoomDatabase::class.java,
                             DATABASE_NAME
-                        ).fallbackToDestructiveMigration()
-                            .build()
+                        )
+                                .fallbackToDestructiveMigration()
+                                .build()
                     }
                 }
             }
